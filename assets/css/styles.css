@@ -1,0 +1,56 @@
+:root {
+  --bg: #f8f5f1;
+  --text: #111214;
+  --muted: #5b5b5b;
+  --accent: #836953;
+  --container: 60ch;
+  --max-width: 900px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1112;
+  --text: #e8e6e1;
+  --muted: #a8a6a2;
+  --accent: #c9ae94;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; background: var(--bg); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.site-header { border-bottom: 1px solid rgba(0,0,0,0.06); background: transparent; }
+.site-title { margin: 0; font-family: Merriweather, Georgia, serif; font-weight: 700; font-size: 1.25rem; display:inline-block;}
+.site-title a { color: var(--text); text-decoration: none; }
+
+.site-nav { float: right; display: flex; gap: 0.75rem; align-items: center; }
+.site-nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.site-nav button { background: transparent; border: none; cursor: pointer; font-size: 1rem; }
+
+.hero { margin: 2rem 0; padding: 1.25rem; border-radius: 8px; background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent); }
+.hero h2 { font-family: Merriweather, Georgia, serif; font-weight: 700; margin: 0 0 0.25rem 0; }
+.hero p { margin: 0 0 1rem 0; color: var(--muted); max-width: var(--container); }
+
+.cta a { background: var(--accent); color: white; padding: 0.5rem 0.9rem; border-radius: 6px; text-decoration: none; }
+
+.latest { margin-top: 1.5rem; }
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+.post-list h4 { margin: 0 0 0.25rem 0; font-family: Merriweather, Georgia, serif; }
+.post-list time { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+.about-blurb { margin-top: 1.5rem; color: var(--muted); }
+
+.site-footer { margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid rgba(0,0,0,0.04); color: var(--muted); }
+
+@media (max-width: 720px) {
+  .site-nav { float: none; margin-top: 0.75rem; justify-content: flex-end; }
+  .hero { padding: 1rem; }
+}

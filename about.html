@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Philoskus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="/">Philoskus</a></h1>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/posts/">Essays</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article style="max-width:60ch">
+      <h2>About</h2>
+      <p>Hello — I'm Philoskus. This site collects short essays, notes, and reading commentary on topics in philosophy: metaphysics, ethics, language, and the craft of conceptual clarity. The format is intentionally simple so ideas come first.</p>
+
+      <h3>How I write</h3>
+      <p>I try to keep pieces short and focused. Each essay contains a few numbered sections, a brief bibliography if needed, and links to further reading. If you'd like me to add an email/contact link or a newsletter signup, I can add that.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Philoskus</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

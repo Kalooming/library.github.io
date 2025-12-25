@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Philoskus — Essays on Philosophy</title>
+  <meta name="description" content="Thoughtful essays, notes, and commentary on philosophy — metaphysics, ethics, language, and more." />
+  <meta name="theme-color" content="#f8f5f1" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Philoskus — Essays on Philosophy" />
+  <meta property="og:description" content="Thoughtful essays, notes, and commentary on philosophy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://philoskus.github.io/" />
+  <!-- Replace with your avatar or site image -->
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <!-- Google / Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="/">Philoskus</a></h1>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/posts/">Essays</a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Essays & Notes on Philosophy</h2>
+      <p>Short essays, reflections, and annotated reading notes focused on metaphysics, ethics, language, and clarity of thought.</p>
+      <p class="cta"><a href="/posts/">Read the latest essays →</a></p>
+    </section>
+
+    <section class="latest">
+      <h3>Latest</h3>
+      <ul class="post-list">
+        <li>
+          <article>
+            <h4><a href="/posts/2025-12-25-introduction.html">A Short Introduction to the Project</a></h4>
+            <time datetime="2025-12-25">Dec 25, 2025</time>
+            <p>Why I write: a brief note on aims, audiences, and how I organize essays and reading notes.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about-blurb">
+      <h3>About this site</h3>
+      <p>This is a lightweight static site intended to be easy to maintain. No build step required — just HTML, CSS, and small JS. If you prefer a blog engine, we can convert to Jekyll, Hugo, or Eleventy later.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Philoskus — Built with simplicity in mind.</p>
+      <p><a href="https://github.com/Philoskus/philoskus.github.io">Repository</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Set year and simple theme toggle (persists in localStorage)
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const current = localStorage.getItem('theme') || 'light';
+    root.dataset.theme = current;
+    toggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
