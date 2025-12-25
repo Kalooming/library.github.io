@@ -12,29 +12,30 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://philoskus.github.io/" />
   <!-- Replace with your avatar or site image -->
-  <meta property="og:image" content="assets/images/og-image.png" />
+  <meta property="og:image" content="/assets/images/og-image.png" />
   <!-- Google / Font (optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="container">
+    <div class="container header-inner">
       <h1 class="site-title"><a href="/">Philoskus</a></h1>
       <nav class="site-nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
         <a href="/posts/">Essays</a>
-        <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+        <button id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">🌓<span class="visually-hidden">Toggle color theme</span></button>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <section class="hero">
       <h2>Essays & Notes on Philosophy</h2>
       <p>Short essays, reflections, and annotated reading notes focused on metaphysics, ethics, language, and clarity of thought.</p>
-      <p class="cta"><a href="/posts/">Read the latest essays →</a></p>
+      <p class="cta"><a class="button" href="/posts/">Read the latest essays →</a></p>
     </section>
 
     <section class="latest">
@@ -64,17 +65,26 @@
   </footer>
 
   <script>
-    // Set year and simple theme toggle (persists in localStorage)
+    // Set year and accessible theme toggle (persists in localStorage)
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.getElementById('theme-toggle');
     const root = document.documentElement;
     const current = localStorage.getItem('theme') || 'light';
     root.dataset.theme = current;
-    toggle.addEventListener('click', () => {
-      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    toggle.setAttribute('aria-pressed', root.dataset.theme === 'dark');
+
+    function updateTheme(next) {
       root.dataset.theme = next;
       localStorage.setItem('theme', next);
+      toggle.setAttribute('aria-pressed', next === 'dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      updateTheme(next);
     });
+
+    // keyboard: space/enter already triggers click on button; nothing extra needed
   </script>
 </body>
 </html>
