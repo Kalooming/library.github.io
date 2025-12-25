@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Essays — Philoskus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <h1 class="site-title"><a href="/">Philoskus</a></h1>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/posts/">Essays</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.8 1.79L6.76 4.84zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.03 1.05l1.8-1.79-1.79-1.8-1.8 1.79 1.79 1.8zM17.24 19.16l1.8 1.79 1.8-1.79-1.8-1.79-1.8 1.79zM21 11v2h3v-2h-3zM12 6a6 6 0 100 12 6 6 0 000-12zM6.76 19.16l-1.8 1.79L6.76 22.75l1.8-1.79-1.8-1.8z"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Essays</h1>
+    <p class="lead">All essays and notes.</p>
+
+    <ul class="post-list">
+      <li>
+        <article>
+          <h4><a href="/posts/2025-12-25-introduction.html">A Short Introduction to the Project</a></h4>
+          <time datetime="2025-12-25">Dec 25, 2025</time>
+          <p class="excerpt">Why I write: a brief note on aims, audiences, and how I organize essays and reading notes.</p>
+        </article>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Philoskus</p>
+      <p><a href="https://github.com/Philoskus/philoskus.github.io">Repository</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
