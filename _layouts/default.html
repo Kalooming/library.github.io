@@ -27,6 +27,12 @@
         <a href="{{ "/" | absolute_url }}">Home</a> ·
         <a href="{{ "/about/" | absolute_url }}">About</a>
       </nav>
+
+      <!-- Post Essay admin button (hidden unless admin mode enabled) -->
+      <div class="admin-controls" style="display:inline-block;margin-left:1rem;">
+        <button id="post-essay-btn" class="admin-btn" title="Create a new post on GitHub" style="display:none">Post Essay</button>
+        <a id="admin-help" href="#" style="display:none;margin-left:.5rem;color:var(--muted);font-size:.9rem;">Admin mode</a>
+      </div>
     </div>
   </header>
 
@@ -37,5 +43,58 @@
   <footer class="site-footer wrap">
     <small>&copy; {{ "now" | date: "%Y" }} {{ site.author.name }} — Built on GitHub Pages</small>
   </footer>
+
+  <script>
+    (function(){
+      // Enable admin mode when ?admin=1 is present. This simply stores a flag in localStorage.
+      try {
+        if (location.search.indexOf('admin=1') !== -1) {
+          localStorage.setItem('philoskus_admin', '1');
+          // remove the query param from the URL for cleanliness without reloading
+          if (history.replaceState) {
+            const clean = location.href.split('?')[0];
+            history.replaceState({}, document.title, clean);
+          }
+        }
+      } catch(e){/* ignore */}
+
+      var isAdmin = false;
+      try { isAdmin = localStorage.getItem('philoskus_admin') === '1'; } catch(e){ isAdmin = false; }
+
+      var btn = document.getElementById('post-essay-btn');
+      var help = document.getElementById('admin-help');
+      if (isAdmin && btn) {
+        btn.style.display = 'inline-block';
+        if (help) { help.style.display = 'inline'; help.href = 'https://github.com/Philoskus/philoskus.github.io'; }
+
+        btn.addEventListener('click', function(){
+          var title = prompt('Post title (will be used to create filename)');
+          if (!title) return;
+          // simple slugify
+          var slug = title.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g,'-');
+          var d = new Date();
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth()+1).padStart(2,'0');
+          var dd = String(d.getDate()).padStart(2,'0');
+          var filename = yyyy + '-' + mm + '-' + dd + '-' + slug + '.md';
+
+          var url = 'https://github.com/Philoskus/philoskus.github.io/new/main?filename=_posts/' + encodeURIComponent(filename);
+          // open GitHub new file page
+          window.open(url, '_blank');
+        });
+      }
+
+      // Expose a small keyboard shortcut: press P while holding Shift to toggle admin mode (for convenience).
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'P' && e.shiftKey) {
+          try {
+            var current = localStorage.getItem('philoskus_admin') === '1';
+            localStorage.setItem('philoskus_admin', current ? '0' : '1');
+            alert('Admin mode ' + (current ? 'disabled' : 'enabled') + '. Reload the page to see changes.');
+          } catch(err){ alert('Could not toggle admin mode.'); }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
