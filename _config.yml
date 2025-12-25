@@ -1,0 +1,22 @@
+---
+title: "Philoskus — Essays on Philosophy"
+description: "Notes, essays and reading fragments on philosophy."
+url: "https://philoskus.github.io"
+baseurl: "" # set if using a subpath
+permalink: /:categories/:title/
+markdown: kramdown
+theme: "" # no remote theme — we provide layouts
+plugins:
+  - jekyll-paginate
+paginate: 6
+author:
+  name: "Philoskus"
+  email: ""
+  bio: "Writer on philosophy and ideas."
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+---
